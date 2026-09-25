@@ -91,6 +91,46 @@ If `adloop-workflows` is unavailable, use `references/diagnostic-playbooks.md` a
 
 Do not install or create new skills unless the user explicitly asks for that.
 
+## Dependency Installation Policy
+
+This orchestrator does not automatically install companion skills, MCP servers, plugins, packages, repositories or external dependencies.
+
+Companion capabilities such as:
+
+- `adloop-workflows`
+- `ad-copy-generation`
+- `audience-targeting`
+- `budget-optimization`
+- `competitor-analysis`
+- `conversion-tracking`
+- `google-ads-audit`
+- `keyword-research`
+- `landing-page-audit`
+- `pmax-optimization`
+- `quality-score-optimization`
+- `remarketing-strategy`
+- `shopping-ads`
+- AdLoop MCP
+
+must already be installed and configured in the current environment if they are to be used.
+
+Installing this orchestrator means installing only this orchestrator and its bundled reference files. References to companion capabilities are routing instructions, not dependency-installation instructions.
+
+At runtime, the orchestrator must discover and use capabilities that are already available.
+
+If a required companion capability is missing:
+
+1. do not install it automatically
+2. do not clone repositories automatically
+3. do not modify global or project tool configuration automatically
+4. report the missing capability when it materially blocks the task
+5. continue with the available capabilities when a safe alternative exists
+6. ask for explicit user authorization before any installation or environment modification
+
+Never interpret phrases such as "related skill", "companion skill", "preferred provider", "recommended capability" or "workflow dependency" as permission to install software.
+
+Orchestration and dependency installation are separate operations.
+
 ## Source of Truth Precedence
 
 When evidence or instructions conflict, use this priority:
